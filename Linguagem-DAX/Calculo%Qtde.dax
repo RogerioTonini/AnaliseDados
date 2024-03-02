@@ -6,4 +6,5 @@ CALCULATE(
     _Chamados[C_Atendidos];
     ALL(fChamados)
 )
+
 RETURN DIVIDE(_Chamados[C_Atendidos]; SomaAtendidos; BLANK())
