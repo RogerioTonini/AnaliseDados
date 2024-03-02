@@ -1,0 +1,68 @@
+/*
+Desenvolvido por Edney Siqueira
+Menu Visual no PBI
+Palestra MVPConf - 11/12/2020
+*/
+Html2 = 
+//https://www.w3schools.com/code/tryit.asp?filename=GLI801JEZ5BO
+var tab = ADDCOLUMNS(ALLSELECTED(fDados[Registro]),"@Valor",CALCULATE(sum(fDados[Valor]),ALLSELECTED(dNome)))
+var maior = maxx(tab,[@valor])
+var altura = ROUNDDOWN(100/COUNTROWS(tab)-2,0)
+var tamanho = SUBSTITUTE(SUM(fDados[Valor])/maior*90,",",".")
+var nome = "C"&SELECTEDVALUE(fDados[Registro])
+var foto = SELECTEDVALUE(dNome[Fotos])
+return
+
+"<style>
+#htmlViewer {margin-top:"&ROUND(altura/3,0)&"vh;}
+    ."&nome&" {
+        width:"&tamanho&"vw;
+height:"&altura&"vh;
+border-radius:"&ROUND(altura/2,0)&"vh;
+            box-shadow: inset -5px -5px 5px rgba(255,255,255,0.6),
+inset 5px 5px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(to right, #00000000, #00008844);
+margin-top: 1vh;
+text-align: right;
+padding: 0 10px 0px 10px;
+line-height:"&altura&"vh;
+            transition: 500ms;
+        }
+
+    ."&nome&":hover{
+      background: linear-gradient(to right, #00008844, #00000000);
+            box-shadow: inset 5px 5px 5px rgba(255,255,255,0.6),
+inset -5px -5px 5px rgba(0,0,0,0.1);
+text-align: left;
+      }
+
+."&nome&":before{
+content: '';
+position: absolute;
+            left: 0;
+           height: "&altura&"vh;
+width: "&altura&"vh;
+background-size: "&altura&"vh;
+border-radius: 50%;
+background-repeat: no-repeat;
+background-image: url("&foto&");
+opacity:0.8;
+transform:scale(0.9);
+            transition: all 1s;
+}
+
+     ."&nome&":hover:before{
+          content:'';
+            font-size:10px;
+            box-shadow: inset 5px 5px 5px rgba(255,255,255,0.6),
+inset -5px -5px 5px rgba(0,0,0,0.1);
+opacity:1;
+left:calc( calc("&tamanho&"vw) - calc("&altura&"vh) );
+transform:scale(1.5);
+border-radius: 10%;
+     }
+</style>
+
+<div class='"&nome&"'>"& SELECTEDVALUE(dNome[Nome]) & " - " & sum(fDados[Valor]) & "
+</div>
+"

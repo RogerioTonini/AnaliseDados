@@ -1,0 +1,18 @@
+Media Mensal = 
+
+// Como Calcular a Média Mensal (AVERAGEX e VALUES)
+//DATAB - KARINE LAGO - YOUTUBE - 08/01/2018
+
+// Função AVERAGEX - Muda o contexto de coluna para o contexto de linha e dessa forma realize
+// corretamente a soma dos valores da coluna [Custos Leads].
+//
+AVERAGEX(
+    // Função VALUES - Retorna uam tabela com valores distintos da tabela que ela iterou.
+    // Neste caso a tabela iterada foi a dCalendario, e retornará os valores dos meses 
+    // de Janeiro a Dezembro, ou seja de 1 a 12 em uma Tabela.
+    // Para validar, basta criar uma medida Meses = VALUES(dCalendario)
+    VALUES(
+        dCalendario[Mês]
+    ), 
+    [Custos Leads]
+)

@@ -1,0 +1,15 @@
+// Total Projetos Ativos
+// Ordenado pela DataInicio coma dCalendario
+//
+Projetos Ativos = 
+CALCULATE(
+    COUNTROWS(dProjetosClienteUndNeg),
+    FILTER(
+        dProjetosClienteUndNeg,
+        dProjetosClienteUndNeg[SitProjeto] = "A"
+    ),
+    USERELATIONSHIP(
+        dCalendario[DataBase], 
+        dProjetosClienteUndNeg[DataInicio]
+    )
+)

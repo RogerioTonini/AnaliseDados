@@ -1,0 +1,11 @@
+/* Calcular a Qtde de Dias de um Período
+Qtde Dias = 
+VAR DataAbertura = SELECTEDVALUE(fChamados[DataChamado])
+VAR DataAgendada = SELECTEDVALUE(fChamados[DataAgendada])
+
+RETURN
+IF(
+     DataAgendada <> BLANK();
+    1 * (DataAgendada - DataAbertura);
+    ""
+)

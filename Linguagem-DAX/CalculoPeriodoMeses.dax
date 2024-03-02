@@ -1,0 +1,25 @@
+/*
+Enviada por: Elissandro Rosa @elisandrosa - 17/12/2020
+Grupo Telegram - Planilheiros
+*/
+// 1ª Parte - Cria coluna calculada na dCalendario para identificar em cada data, quantos meses se passaram dentro do período que o DATASET possuir.
+
+mesesPassados = 
+(((YEAR(MAX(dCalendario[data])) - YEAR(dCalendario[data])) * 12) + (MONTH(MAX(dCalendario[data]))) - MONTH(dCalendario[data]))
+
+/*
+2ª Parte - 
+a-) Cria uma tabela virtual com todas as datas dentro do período solicitado na função ADDDATE (no caso -2, ou seja, 2 meses anteriores)
+b-) Totaliza a coluna [Valor], dentro do período desejado. Neste caso será demonstrado o período do mês corrente + 2 meses para trás com a utilização da
+função DATESINPERIOD e com base na Tabela/Coluna Teste[data].
+
+Valor Últimos 3 Meses = 
+VAR vData = 
+STARTOFMONTH(
+    DATEADD(dCalendario[data], -2, MONTH) 
+)
+RETURN
+CALCULATE(
+    SUM(Teste[valor]),
+    DATESINPERIOD(dCalendario[data], Teste[data], 3, MONTH)
+)

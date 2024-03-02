@@ -1,0 +1,40 @@
+Soma Horas Decimal Ajustada =
+// Quando o dia de início é diferente do dia final, calcula
+// a diferença de horas entre a HoraInicial e Meia-noite para o DataInicial
+VAR vHorasDiaInicial = 
+
+SUMX(
+  FILTER(<tabela[DataInicial]> <> <tabela[DataFinal]>),
+  24 * (TIME(23, 59, 59) - <tabela[HoraInicial] + 1 / 86400)
+)    
+//
+// Quando o dia de início é diferente do dia final, calcula
+// a diferença de horas entre a Meia-noite e a HoraFinal para a DataFinal
+//
+VAR vHorasDiaFinal =
+
+CALCULATE(
+  SUMX(
+    FILTER(<tabela>, <tabela[DataInicial]> <> <tabela[DataFinal]>),
+    24 * (<tabela[HoraFinal]> - TIME(00, 00, 00))
+  ),
+  USERELATIONSHIP(
+    <tabela[DataFinal]>, 
+    dCalendario[DataBase]
+  ), 
+  USERELATIONSHIP(
+    <tabela[HoraFinal]>,
+    dHora[Hora]
+  )
+)
+//
+// Quando a DataIncial é igual a DataFinal, soma a qtde de horas normalmente
+//
+VAR vHorasMesmoDia = 
+
+SUMX(
+  FILTER(<tabela>, <tabela[DataIncial]> = <tabela[DataFinal]>),
+  <tabela[Horas]>
+)
+
+RETURN vHorasDiaInicial + vHorasDiaFianl + vHorasMesmoDia
