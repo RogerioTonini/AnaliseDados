@@ -1,0 +1,29 @@
+/* Medida utilizando MAXX, UNION e SWITCH.
+Utilizar quando você tem múltiplos calculos a serem realizados
+e o resultado final é jogado para a medida.
+*/
+
+Medida =
+   
+   VAR A = 1
+   VAR B = 5
+   VAR C = 10
+   VAR D = 6
+   VAR C = 50
+
+RETURN
+
+MAX(
+   UNION(
+      /*
+      "MEDIDA" - Nome da coluna
+      A - Resultado da Medida
+      */
+      ROW("MEDIDA", A)
+      ROW("MEDIDA", B)
+      ROW("MEDIDA", C)
+      ROW("MEDIDA", D)
+      ROW("MEDIDA", A)
+      ROW("MEDIDA", A)
+   )
+) 
