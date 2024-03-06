@@ -1,4 +1,8 @@
-Desafio: XFAshion (cliente) ter um overview do negócio como um todo e avaliar desempenho 
+Link de storytelling: https://forum.xperiun.com/topic/7064-link-workshop-janeiro/#comment-35351 (Não está disponível)
+
+Método INCRÍVEL para Comparar Períodos de Forma Nativa no Power BI: https://www.youtube.com/watch?v=7_JZN3MipLs
+
+Desafio: XFashion (cliente) ter um overview do negócio como um todo e avaliar desempenho 
 dos vendedores.
 
    Dono da XFashion: Matias, para levantamento dos requisitos, ele passou algumas 

@@ -1,7 +1,9 @@
-/* Medida utilizando MAXX, UNION e SWITCH.
-Utilizar quando você tem múltiplos calculos a serem realizados
-e o resultado final é jogado para a medida.
-*/
+// Medida utilizando MAXX, UNION e SWITCH.
+// Utilizar quando você tem múltiplos calculos a serem realizados
+// e o resultado final é jogado para a medida.
+
+// Autor: Joviano Silveira
+// Pagina: https://joviano.com/tabela-no-dax/#comments
 
 Medida =
    
