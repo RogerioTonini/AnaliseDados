@@ -63,3 +63,78 @@ valor_total_venda.: Moeda
 Teve Desconto?....: Boolean
 desconto..........: Moeda
 data_venda........: Data
+
+---------------------------------------------------------
+
+Medidas Clientes
+
+%CLientesAtivos = 
+    DIVIDE(
+        MedidasFaturamento[ClientesFaturados],
+        MedidasClientes[TotClientesCad],
+        0
+    )
+
+TotClientesCad = 
+    DISTINCTCOUNT(
+        dClientes[nome_cliente]
+    )
+	
+MedidasFaturamento
+
+
+ClientesFaturados = 
+    DISTINCTCOUNT(
+        fVendas[id_cliente]
+    )
+
+Faturamento = 
+    SUM(
+        fVendas[valor_total_venda]
+    )
+
+QtdeTotProdVendas = 
+    sum(
+        fVendas[id_produto]
+    )
+
+QtdProdFaturados = 
+    SUM(
+        fVendas[quantidade_vendida]
+    )
+
+TicketMedioCliente = 
+    DIVIDE(
+        MedidasFaturamento[Faturamento],
+        MedidasFaturamento[ClientesFaturados],
+        0
+    )
+
+TicketMedioProduto = 
+    DIVIDE(
+        MedidasFaturamento[Faturamento],
+        MedidasFaturamento[QtdProdFaturados],
+        0
+    )
+
+VendedorFaturamento = 
+    SUM(
+        fVendas[valor_total_venda]
+    )
+
+VlrDesconto = 
+    SUM(
+        fVendas[desconto]
+    )
+
+Medidas Produtos
+
+QtdeMarcasCad = 
+    DISTINCTCOUNT(
+        dProdutos[marca]
+    )
+
+QtdeProdutosCad = 
+    DISTINCTCOUNT(
+        dProdutos[nome_produto]
+    )

@@ -1,0 +1,64 @@
+/*
+Medida....: CriaTabela
+Objetivo..: Criando tabelas MANUALMENTE em DAX
+Autor.....: Joviano Silveira
+Alterações: Rogerio Tonini
+Vantagens: não apaerce no Modelo de Dados
+--------------------------------------------------------------------------------
+Alterações:
+
+--------------------------------------------------------------------------------
+https://www.linkedin.com/in/rogerio-tonini/
+https://github.com/RogerioTonini/Linguagem-M
+
+Blog do Joviano Silveira : https://joviano.com/tabela-no-dax/
+--------------------------------------------------------------------------------
+*/
+
+/* 1 – Criando uma tabela no DAX com uma linha simples */
+Tabela = {"A"}
+
+RETURN
+
+/* 2 – Criando uma tabela no DAX com uma coluna e várias linhas. Nos exemplos 1 e 2
+não tem cabeçalho na tabela. */
+
+Tabela = 
+  {
+    "banana",
+    "pera",
+    "uva"
+  }
+
+/* OU com a utilização da função UNION */
+
+Tabela = 
+    UNION(
+        {"banana"},
+        {"pera"},
+        {"uva"}
+    )
+
+RETURN
+
+/* Neste exemplo o cabeçalho é FRUTA */
+Tabela = 
+    UNION(
+        ROW("Fruta", "Banana"), -- linha 1
+        ROW("Fruta", "pera"),   -- linha 2
+        ROW("Fruta", "uva")     -- linha 3
+    )
+
+/* 3 – Criando uma tabela com várias colunas e várias linhas */
+Tabela = 
+    DATATABLE(
+        "fruta", STRING,
+        "peso", INTEGER,
+        {
+            {"banana", 100},
+            {"pera", 180},
+            {"uva", 20}
+        }
+    )
+
+
