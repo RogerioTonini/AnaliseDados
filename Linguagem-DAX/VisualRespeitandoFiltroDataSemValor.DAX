@@ -1,0 +1,27 @@
+Visual respeitando filtro de data, considerando períodos sem dados
+
+Criado por: João Raulino
+
+
+Alunos
+ Solução
+Postado Março 6
+Suave @Rafael Fina Ferreira?
+
+O problema esta na tua medida [Limite Diurno NBR 10.151] que é uma constante e por definição não pode ser filtrada pelo segmentador de datas.
+
+Você pode resolver esse problema usando as linhas de referencia no lugar:
+
+
+E atualizando a medida [Soma LR]:
+
+Soma LR =
+VAR _VirtualTable =
+    SUMMARIZE(
+        'dCalendario',
+        dCalendario[Data],
+        "Ruido",
+        COALESCE(CALCULATE(SUM('fRuído'[LR]), 'fRuído'[Data da Amostragem] = MAX(dCalendario[Data])),0)
+    )
+RETURN
+    SUMX(_VirtualTable,[Ruido])

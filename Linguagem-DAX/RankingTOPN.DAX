@@ -1,0 +1,65 @@
+/*------------------------------------------------------------------------------------------------------------
+	Objetivo........: Criando um ranking utilizando a função TOPN
+	Desenvolvida por: Tiago Craici - Xperiun
+	Data partilha...: 18/03/2024
+	Aula: https://app.xperiun.com/aula/1704330688582x112559474388616460?v=1704838857509x907615423149644700
+------------------------------------------------------------------------------------------------------------*/
+
+// Solução 1 - Com CALCULATE() e fixando na própria medida a quantidade de posições do ranking
+
+TOP 5 = 
+CALCULATE(
+    [nProdutosFaturados],
+    FILTER(
+        dProdutos, 
+        RANKX(
+            ALL(dProdutos),
+            [nProdutosFaturados]
+		) <= 5
+    )
+)
+
+// Solução 2 - Utilizando TOPN + CALCULATE() 
+
+Com função TOPN:
+
+
+TOP 5 com TOPN = 
+
+var _TopN = 
+
+TOPN(
+    5,
+    ALL(dProdutos),
+    [nProdutosFaturados]
+)
+return 
+CALCULATE(
+    [nProdutosFaturados],
+    KEEPFILTERS(_TopN)
+)
+
+// Solução 3 - Partilha por Ítalo Monteiro - Comunidade: Power Bi e Dados, Grupo: Power Bi e Dados
+
+Ranking top5 =
+
+VAR Ranking = 
+
+RANKX(
+	ALL( 'dprodutos[nome_produto]' ),
+	[nProdutosFaturados],
+	,
+	Desc,
+	Dense
+)
+
+RETURN
+CALCULATE(
+	[nProdutosFaturados],
+	(
+		Filter(
+			Values( dprodutos[nome_produto)
+			Ranking <= 5
+		)	
+	)
+)

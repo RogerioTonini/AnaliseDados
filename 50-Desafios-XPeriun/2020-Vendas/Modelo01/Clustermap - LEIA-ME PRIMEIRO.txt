@@ -1,0 +1,7 @@
+Utilizamos o visual customizado Cluster Map em uma das páginas da solução. 
+Porém como ele não está mais disponível na store de visuais, você precisa importar ele através 
+de um arquivo para poder usar no Power BI Desktop. 
+
+Para isso, ao invés de clicar em "Obter mais visuais", como seria o processo tradicional 
+para incluir um visual customizado, você deve clicar em "Importar um visual de um arquivo". 
+Escolha o arquivo "Clustermap - Visual Customizado.pbiviz" e está pronto para uso!

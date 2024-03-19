@@ -5,12 +5,27 @@ Palestra MVPConf - 11/12/2020
 */
 Html2 = 
 //https://www.w3schools.com/code/tryit.asp?filename=GLI801JEZ5BO
-var tab = ADDCOLUMNS(ALLSELECTED(fDados[Registro]),"@Valor",CALCULATE(sum(fDados[Valor]),ALLSELECTED(dNome)))
+var tab = 
+	ADDCOLUMNS(
+		ALLSELECTED(fDados[Registro]),
+		"@Valor",
+		CALCULATE(
+			SUM(fDados[Valor]),
+			ALLSELECTED(dNome)
+		)
+	)
+	
 var maior = maxx(tab,[@valor])
+
 var altura = ROUNDDOWN(100/COUNTROWS(tab)-2,0)
-var tamanho = SUBSTITUTE(SUM(fDados[Valor])/maior*90,",",".")
-var nome = "C"&SELECTEDVALUE(fDados[Registro])
+var tamanho = 
+	SUBSTITUTE(
+		SUM(fDados[Valor]) / maior * 90,",","."
+	)
+var nome = "C" & SELECTEDVALUE(fDados[Registro])
+
 var foto = SELECTEDVALUE(dNome[Fotos])
+
 return
 
 "<style>

@@ -1,0 +1,26 @@
+/*
+-------------------------------------------------------------------
+  Objetivo: Calcula o numero da semana no Trimestre em questão
+-------------------------------------------------------------------
+*/
+
+SemanaTrimestre =
+
+	VAR _NumTrimestre =
+		QUARTER(dCalendario[DataBase])
+		
+	VAR _InicioTrimestre =
+		STARTOFQUARTER(dCalendario[DataBase])
+		
+	VAR _NumSemana =
+		ROUNDUP(
+			DATEDIFF( 
+				_InicioTrimestre, 
+				dCalendario[DataBase] + 1, DAY 
+			) 
+			/ 7, 
+			0 
+		)
+		
+RETURN
+    _NumSemana

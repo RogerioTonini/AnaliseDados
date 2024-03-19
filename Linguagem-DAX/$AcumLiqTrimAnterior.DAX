@@ -1,0 +1,11 @@
+/*--------------------------------------------------------------------------
+	Objetivo: Calculo do Faturamento Trimestral Anterior ao Atual
+	É utilizado tanto para Valor Faturamento Liquido quanto para o Atual
+  --------------------------------------------------------------------------
+*/
+
+$AcumLiqTrimAnterior = 
+	CALCULATE(
+		[$FaturTotLiquido],
+		DATEADD(dCalendario[DataBase], -3, MONTH)
+	)

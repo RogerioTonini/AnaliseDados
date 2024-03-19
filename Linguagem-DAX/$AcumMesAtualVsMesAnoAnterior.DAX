@@ -1,0 +1,5 @@
+$AcumMesAtualVsMesAnoAnterior =
+	CALCULATE(
+		[$FaturMesAtual],
+		DATEADD(dCalendario[DataBase], -12, MONTH)
+	)
